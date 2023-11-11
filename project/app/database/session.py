@@ -11,8 +11,9 @@ DATABASE = get_settings().database_name
 USER = get_settings().database_user
 PASSWORD = get_settings().database_password
 DATABASE_URL = f"mysql+mysqldb://{USER}:{PASSWORD}@{HOST}/{DATABASE}"
+SQLLITE_URL = "sqlite:///./sql_app.db"
 
-engine = create_engine(DATABASE_URL)
+engine = create_engine(SQLLITE_URL, connect_args={"check_same_thread": False})
 
 
 @lru_cache

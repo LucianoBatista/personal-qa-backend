@@ -1,6 +1,6 @@
-FROM python:3.10.0-slim-buster
+FROM python:3.11.0-slim-buster
 
-LABEL maintainer='ArcoTech'
+LABEL maintainer='luba'
 
 # set working directory
 WORKDIR /usr/src/app
@@ -16,8 +16,7 @@ RUN apt-get -qq update && \
     default-libmysqlclient-dev \
     libmariadbclient-dev \
     redis-server \
-    libcurl4-openssl-dev \
-    libssl-dev
+    libcurl4-openssl-dev
 
 # copying requirements
 COPY Pipfile* ./

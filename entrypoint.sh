@@ -12,30 +12,30 @@ set -o nounset
 : "${MYSQL_PASSWORD:=admin}"
 : "${MYSQL_DATABASE:=populate}"
 
-mysql_ready() {
-python << END
-import sys
-
-import mysql.connector
-from mysql.connector import Error
-
-try:
-    connection = mysql.connector.connect(host="${MYSQL_HOST}",
-                                        database="${MYSQL_DATABASE}",
-                                        user="${MYSQL_USER}",
-                                        password="${MYSQL_PASSWORD}")
-    print("Conexão estabelecida")
-except:
-    sys.exit(-1)
-sys.exit(0)
-
-END
-}
-until mysql_ready; do
-    >&2 echo 'Waiting for Mysql to become available...'
-    sleep 1
-done
->&2 echo 'Mysql is available'
+# mysql_ready() {
+# python << END
+# import sys
+#
+# import mysql.connector
+# from mysql.connector import Error
+#
+# try:
+#     connection = mysql.connector.connect(host="${MYSQL_HOST}",
+#                                         database="${MYSQL_DATABASE}",
+#                                         user="${MYSQL_USER}",
+#                                         password="${MYSQL_PASSWORD}")
+#     print("Conexão estabelecida")
+# except:
+#     sys.exit(-1)
+# sys.exit(0)
+#
+# END
+# }
+# until mysql_ready; do
+#     >&2 echo 'Waiting for Mysql to become available...'
+#     sleep 1
+# done
+# >&2 echo 'Mysql is available'
 
 echo 'Starting FastAPI Web Application...'
 alembic upgrade head

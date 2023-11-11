@@ -11,6 +11,7 @@ DATABASE = get_settings().database_name
 USER = get_settings().database_user
 PASSWORD = get_settings().database_password
 DATABASE_URL = f"mysql+mysqldb://{USER}:{PASSWORD}@{HOST}/{DATABASE}"
+SQLLITE_URL = "sqlite:///./sql_app.db"
 
 config = context.config
 config.set_main_option("sqlalchemy.url", DATABASE_URL)

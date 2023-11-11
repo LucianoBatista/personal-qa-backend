@@ -1,7 +1,7 @@
 import os
 from functools import lru_cache
 
-from pydantic import BaseSettings
+from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
@@ -22,7 +22,7 @@ class Settings(BaseSettings):
     task_default_queue: str = "default"
 
     # resources base settings
-    resources_folder = "project/app/resources"
+    resources_folder: str = "project/app/resources"
 
 
 @lru_cache()

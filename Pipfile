@@ -4,27 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-numpy = "==1.23"
-pandas = "==1.5"
 fastapi = "==0.104.1"
-uvicorn = "==0.24"
 gunicorn = "==21.2.0"
-pydantic = "==2.4"
 sqlalchemy = "==2.0.23"
 alembic = "==1.12.1"
-pymysql = "==1.1.0"
-mysqlclient = "==2.2.0"
-mysql-connector-python = "==8.2.0"
-polars = "==0.19"
+pydantic-settings = "==2.0.3"
+uvicorn = "==0.24"
 
 [dev-packages]
-black = "*"
-isort = "*"
-flake8 = "*"
-pre-commit = "*"
-mkdocs-material = "*"
-mkdocs-mermaid2-plugin = "*"
-fontawesome-markdown = "*"
 
 [requires]
 python_version = "3.11"
