@@ -1,8 +1,8 @@
-"""create inital kws table
+"""create inital table
 
-Revision ID: e826ae9729fd
+Revision ID: ed0824e28579
 Revises: 
-Create Date: 2023-11-11 11:56:29.549239
+Create Date: 2023-11-11 14:08:47.951028
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'e826ae9729fd'
+revision = 'ed0824e28579'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -21,32 +21,36 @@ def upgrade() -> None:
     op.create_table('tags',
     sa.Column('TagID', sa.Integer(), nullable=False),
     sa.Column('TagName', sa.String(length=50), nullable=False),
+    sa.Column('CreatedAt', sa.DateTime(), nullable=False),
+    sa.Column('UpdatedAt', sa.DateTime(), nullable=False),
     sa.PrimaryKeyConstraint('TagID')
     )
     op.create_table('users',
     sa.Column('UserID', sa.Integer(), nullable=False),
     sa.Column('Username', sa.String(length=50), nullable=False),
-    sa.Column('Email', sa.String(length=50), nullable=False),
-    sa.Column('Password', sa.String(length=50), nullable=False),
     sa.PrimaryKeyConstraint('UserID')
     )
     op.create_table('questions',
     sa.Column('QuestionID', sa.Integer(), nullable=False),
     sa.Column('UserID', sa.Integer(), nullable=False),
     sa.Column('QuestionText', sa.String(), nullable=False),
-    sa.Column('DateAsked', sa.DateTime(), nullable=False),
+    sa.Column('CreatedAt', sa.DateTime(), nullable=False),
+    sa.Column('UpdatedAt', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['UserID'], ['users.UserID'], ),
-    sa.PrimaryKeyConstraint('QuestionID')
+    sa.PrimaryKeyConstraint('QuestionID'),
+    sa.UniqueConstraint('QuestionText')
     )
     op.create_table('answers',
     sa.Column('AnswerID', sa.Integer(), nullable=False),
     sa.Column('UserID', sa.Integer(), nullable=False),
     sa.Column('QuestionID', sa.Integer(), nullable=False),
     sa.Column('AnswerText', sa.String(), nullable=False),
-    sa.Column('DateAnswered', sa.DateTime(), nullable=False),
+    sa.Column('CreatedAt', sa.DateTime(), nullable=False),
+    sa.Column('UpdatedAt', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['QuestionID'], ['questions.QuestionID'], ),
     sa.ForeignKeyConstraint(['UserID'], ['users.UserID'], ),
-    sa.PrimaryKeyConstraint('AnswerID')
+    sa.PrimaryKeyConstraint('AnswerID'),
+    sa.UniqueConstraint('AnswerText')
     )
     op.create_table('question_tags',
     sa.Column('QuestionID', sa.Integer(), nullable=True),
