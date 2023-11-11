@@ -14,5 +14,14 @@ I'm continuously enhancing this project to provide you with a comprehensive set 
 - **Tag Registration**: Categorize questions for easy retrieval, even without AI assistance.
 - **AI-Based Question Creation**: Generate questions based on existing text context, making learning more intuitive.
 - **AI-Powered Answer Correction**: Utilize AI to improve the accuracy of your answers.
+- **AI-Duplication Detector**: Utilize AI to detect which question is duplicated. Besides we could search for exact same text, is better to search for very similar questions.
 
 As of now, this backend operates without a queue system, ensuring that every request is handled synchronously for a seamless user experience.
+
+# Flow
+
+1. Register a user
+2. Register a question (vinculado to the user)
+3. Register a tag to question
+4. Register the relationship between tag and question
+5. Register a answer (vinculado to the question)
