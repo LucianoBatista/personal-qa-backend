@@ -1,0 +1,48 @@
+version: '3.8'
+services:
+  web:
+    build:
+      context: ./
+    image: backend-qa:latest
+    container_name: web
+    hostname: web
+    volumes:
+    - ./:/usr/src/app
+    ports:
+      - 8010:8000
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_DATABASE: populate
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: root
+      APP_NAME: web
+      AWS_REGION_NAME:
+      AWS_ACCESS_KEY_ID:
+      AWS_SECRET_ACCESS_KEY:
+      AWS_BUCKET:
+      POD_TYPE: web
+    restart: always
+    depends_on:
+      - mysql
+  mysql:
+    image: docker.io/library/mysql:8.0
+    container_name: mysql
+    hostname: mysql
+    volumes:
+    - mysql-data:/var/lib/mysql_data/data/
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_DATABASE: populate
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_ROOT_PASSWORD: root
+      POD_TYPE: worker
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+    - 3306:3306
+    restart: always
+
+volumes:
+  mysql-data:
+    driver: local
