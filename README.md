@@ -1,4 +1,4 @@
-# :sparkles: Question and Answering Application Backend
+# :technologist: Question and Answering Application Backend
 
 Welcome to the Question and Answering Application Backend, where it primary objective is to serve as the backbone for a personalized question answering platform. This platform empowers you to enhance your knowledge and skills in any subject of your choice.
 
