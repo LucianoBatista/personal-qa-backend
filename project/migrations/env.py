@@ -14,7 +14,7 @@ DATABASE_URL = f"mysql+mysqldb://{USER}:{PASSWORD}@{HOST}/{DATABASE}"
 SQLLITE_URL = "sqlite:///./sql_app.db"
 
 config = context.config
-config.set_main_option("sqlalchemy.url", DATABASE_URL)
+config.set_main_option("sqllite.url", SQLLITE_URL)
 
 # Interpret the config file for Python logging.
 # This line sets up loggers basically.
@@ -45,7 +45,7 @@ def run_migrations_offline() -> None:
     script output.
 
     """
-    url = config.get_main_option("sqlalchemy.url")
+    url = config.get_main_option("sqllite.url")
     context.configure(
         url=url,
         target_metadata=target_metadata,
