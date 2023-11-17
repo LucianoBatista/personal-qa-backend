@@ -49,7 +49,7 @@ class Answer(Base):
 class Tag(Base):
     __tablename__ = "tags"
     TagID = Column(Integer, primary_key=True)
-    TagName = Column(String(50), nullable=False)
+    TagName = Column(String(50), nullable=False, unique=True)
     CreatedAt = Column(DateTime, nullable=False, default=datetime.now())
     UpdatedAt = Column(
         DateTime, nullable=False, default=datetime.now(), onupdate=datetime.now()

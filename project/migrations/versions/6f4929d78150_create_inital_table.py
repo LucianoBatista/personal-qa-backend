@@ -1,8 +1,8 @@
 """create inital table
 
-Revision ID: ed0824e28579
+Revision ID: 6f4929d78150
 Revises: 
-Create Date: 2023-11-11 14:08:47.951028
+Create Date: 2023-11-12 18:55:34.282170
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'ed0824e28579'
+revision = '6f4929d78150'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -23,7 +23,8 @@ def upgrade() -> None:
     sa.Column('TagName', sa.String(length=50), nullable=False),
     sa.Column('CreatedAt', sa.DateTime(), nullable=False),
     sa.Column('UpdatedAt', sa.DateTime(), nullable=False),
-    sa.PrimaryKeyConstraint('TagID')
+    sa.PrimaryKeyConstraint('TagID'),
+    sa.UniqueConstraint('TagName')
     )
     op.create_table('users',
     sa.Column('UserID', sa.Integer(), nullable=False),
